@@ -10,13 +10,12 @@ import Lottie
 
 class LikeViewController: UIViewController {
     
-    private lazy var animatedButton: AnimatedButton = {
-        let button = AnimatedButton(animation: Animation.named("likeAnimation")!)
-        button.contentMode = .scaleAspectFit
-        button.addTarget(self, action: #selector(toggleLike), for: .touchUpInside)
-        button.animationSpeed = 2
-        button.setPlayRange(fromProgress: 0, toProgress: 0.5, event: .touchUpInside)
-        return button
+    private lazy var animationView: AnimationView = {
+        let animationView = AnimationView(animation: Animation.named("likeAnimation")!)
+        animationView.contentMode = .scaleAspectFit
+        animationView.animationSpeed = 2
+        animationView.contentMode = .scaleAspectFit
+        return animationView
     }()
     
     init() {
@@ -32,23 +31,29 @@ class LikeViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        animatedButton.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(animatedButton)
+        animationView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(animationView)
         NSLayoutConstraint.activate([
-            animatedButton.centerXAnchor.constraint(equalTo:view.centerXAnchor),
-            animatedButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            animatedButton.widthAnchor.constraint(equalToConstant: 300),
-            animatedButton.heightAnchor.constraint(equalToConstant: 300)
+            animationView.centerXAnchor.constraint(equalTo:view.centerXAnchor),
+            animationView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            animationView.widthAnchor.constraint(equalToConstant: 300),
+            animationView.heightAnchor.constraint(equalToConstant: 300)
         ])
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(toggleLike))
+        animationView.addGestureRecognizer(tapGesture)
     }
     
+    var isLiked: Bool = false
     @objc func toggleLike() {
-        animatedButton.isSelected = !animatedButton.isSelected
+        isLiked = !isLiked
         
-        if animatedButton.isSelected {
-            animatedButton.setPlayRange(fromProgress: 0.5, toProgress: 1, event: .touchUpInside)
+        if isLiked {
+            animationView.play(fromProgress: 0, toProgress: 0.5, loopMode: .playOnce)
         } else {
-            animatedButton.setPlayRange(fromProgress: 0, toProgress: 0.5, event: .touchUpInside)
+            animationView.play(fromProgress: 0.5, toProgress: 1, loopMode: .playOnce)
         }
     }
 }
+
+

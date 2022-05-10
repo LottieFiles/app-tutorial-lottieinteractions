@@ -10,13 +10,11 @@ import Lottie
 
 class ToggleViewController: UIViewController {
     
-    private lazy var animatedButton: AnimatedButton = {
-        let button = AnimatedButton(animation: Animation.named("toggleAnimation")!)
-        button.contentMode = .scaleAspectFit
-        button.addTarget(self, action: #selector(toggleAppearance), for: .touchUpInside)
-        button.animationSpeed = 2
-        button.setPlayRange(fromProgress: 0, toProgress: 0.5, event: .touchUpInside)
-        return button
+    private lazy var animationView: AnimationView = {
+        let animationView = AnimationView(animation: Animation.named("toggleAnimation")!)
+        animationView.contentMode = .scaleAspectFit
+        animationView.animationSpeed = 2
+        return animationView
     }()
     
     init() {
@@ -32,27 +30,31 @@ class ToggleViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        animatedButton.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(animatedButton)
+        animationView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(animationView)
         NSLayoutConstraint.activate([
-            animatedButton.centerXAnchor.constraint(equalTo:view.centerXAnchor),
-            animatedButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            animatedButton.widthAnchor.constraint(equalToConstant: 126),
-            animatedButton.heightAnchor.constraint(equalToConstant: 74)
+            animationView.centerXAnchor.constraint(equalTo:view.centerXAnchor),
+            animationView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            animationView.widthAnchor.constraint(equalToConstant: 126),
+            animationView.heightAnchor.constraint(equalToConstant: 74)
         ])
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(toggleAppearance))
+        animationView.addGestureRecognizer(tapGesture)
     }
     
+    var isDarkMode: Bool = false
     @objc func toggleAppearance() {
-        animatedButton.isSelected = !animatedButton.isSelected
+        isDarkMode = !isDarkMode
         
-        if animatedButton.isSelected {
-            animatedButton.setPlayRange(fromProgress: 0.5, toProgress: 1, event: .touchUpInside)
+        if isDarkMode {
+            animationView.play(fromProgress: 0, toProgress: 0.5, loopMode: .playOnce)
         } else {
-            animatedButton.setPlayRange(fromProgress: 0, toProgress: 0.5, event: .touchUpInside)
+            animationView.play(fromProgress: 0.5, toProgress: 1, loopMode: .playOnce)
         }
         
-        UIView.animate(withDuration: 0.5, delay: 0) { [view, animatedButton] in
-            view?.backgroundColor = animatedButton.isSelected ? .darkGray : .white
+        UIView.animate(withDuration: 0.5, delay: 0) { [view, isDarkMode] in
+            view?.backgroundColor = isDarkMode ? .darkGray : .white
         }
     }
 }
