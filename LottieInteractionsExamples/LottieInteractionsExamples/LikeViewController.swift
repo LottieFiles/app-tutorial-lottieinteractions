@@ -1,5 +1,5 @@
 //
-//  ToggleViewController.swift
+//  LikeViewController.swift
 //  LottieInteractionsExamples
 //
 //  Created by Evandro Harrison Hoffmann on 10/05/2022.
@@ -8,12 +8,12 @@
 import UIKit
 import Lottie
 
-class ToggleViewController: UIViewController {
+class LikeViewController: UIViewController {
     
     private lazy var animatedButton: AnimatedButton = {
-        let button = AnimatedButton(animation: Animation.named("toggleAnimation")!)
+        let button = AnimatedButton(animation: Animation.named("likeAnimation")!)
         button.contentMode = .scaleAspectFit
-        button.addTarget(self, action: #selector(toggleAppearance), for: .touchUpInside)
+        button.addTarget(self, action: #selector(toggleLike), for: .touchUpInside)
         button.animationSpeed = 2
         button.setPlayRange(fromProgress: 0, toProgress: 0.5, event: .touchUpInside)
         return button
@@ -21,7 +21,7 @@ class ToggleViewController: UIViewController {
     
     init() {
         super.init(nibName: nil, bundle: nil)
-        title = "Toggle Appearance"
+        title = "Like"
     }
     
     required init?(coder: NSCoder) {
@@ -37,22 +37,18 @@ class ToggleViewController: UIViewController {
         NSLayoutConstraint.activate([
             animatedButton.centerXAnchor.constraint(equalTo:view.centerXAnchor),
             animatedButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            animatedButton.widthAnchor.constraint(equalToConstant: 126),
-            animatedButton.heightAnchor.constraint(equalToConstant: 74)
+            animatedButton.widthAnchor.constraint(equalToConstant: 300),
+            animatedButton.heightAnchor.constraint(equalToConstant: 300)
         ])
     }
     
-    @objc func toggleAppearance() {
+    @objc func toggleLike() {
         animatedButton.isSelected = !animatedButton.isSelected
         
         if animatedButton.isSelected {
             animatedButton.setPlayRange(fromProgress: 0.5, toProgress: 1, event: .touchUpInside)
         } else {
             animatedButton.setPlayRange(fromProgress: 0, toProgress: 0.5, event: .touchUpInside)
-        }
-        
-        UIView.animate(withDuration: 0.5, delay: 0) { [view, animatedButton] in
-            view?.backgroundColor = animatedButton.isSelected ? .darkGray : .white
         }
     }
 }

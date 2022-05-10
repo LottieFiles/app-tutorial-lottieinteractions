@@ -24,9 +24,17 @@ class OpenGiftViewController: UIViewController {
         return label
     }()
     
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        title = "Open Gift"
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Open Gift"
         view.backgroundColor = .white
         
         unwrappedLabel.translatesAutoresizingMaskIntoConstraints = false
