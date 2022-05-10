@@ -30,7 +30,8 @@ class MainViewController: UITabBarController {
         }
         
         viewControllers = [
-            OpenGiftViewController()
+            OpenGiftViewController(),
+            ToggleViewController()
         ]
     }
 

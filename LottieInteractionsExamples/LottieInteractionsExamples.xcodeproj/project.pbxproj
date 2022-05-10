@@ -15,6 +15,8 @@
 		6C489D42282AA53F00A85710 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 6C489D41282AA53F00A85710 /* Lottie */; };
 		6C489D45282AA75E00A85710 /* OpenGiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C489D44282AA75E00A85710 /* OpenGiftViewController.swift */; };
 		6C489D49282AAA4600A85710 /* holidaysGiftAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 6C489D48282AAA4600A85710 /* holidaysGiftAnimation.json */; };
+		6C489D4B282AAD4100A85710 /* ToggleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C489D4A282AAD4100A85710 /* ToggleViewController.swift */; };
+		6C489D4D282AAE2200A85710 /* toggleAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 6C489D4C282AAE2200A85710 /* toggleAnimation.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,8 @@
 		6C489D3A282AA49A00A85710 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6C489D44282AA75E00A85710 /* OpenGiftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenGiftViewController.swift; sourceTree = "<group>"; };
 		6C489D48282AAA4600A85710 /* holidaysGiftAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = holidaysGiftAnimation.json; sourceTree = "<group>"; };
+		6C489D4A282AAD4100A85710 /* ToggleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleViewController.swift; sourceTree = "<group>"; };
+		6C489D4C282AAE2200A85710 /* toggleAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = toggleAnimation.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,7 @@
 			children = (
 				6C489D30282AA49900A85710 /* MainViewController.swift */,
 				6C489D44282AA75E00A85710 /* OpenGiftViewController.swift */,
+				6C489D4A282AAD4100A85710 /* ToggleViewController.swift */,
 				6C489D46282AAA1600A85710 /* Assets */,
 				6C489D43282AA55000A85710 /* Supporting Files */,
 			);
@@ -92,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				6C489D48282AAA4600A85710 /* holidaysGiftAnimation.json */,
+				6C489D4C282AAE2200A85710 /* toggleAnimation.json */,
 			);
 			path = Animations;
 			sourceTree = "<group>";
@@ -162,6 +168,7 @@
 			files = (
 				6C489D49282AAA4600A85710 /* holidaysGiftAnimation.json in Resources */,
 				6C489D39282AA49A00A85710 /* LaunchScreen.storyboard in Resources */,
+				6C489D4D282AAE2200A85710 /* toggleAnimation.json in Resources */,
 				6C489D36282AA49A00A85710 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -174,6 +181,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6C489D31282AA49900A85710 /* MainViewController.swift in Sources */,
+				6C489D4B282AAD4100A85710 /* ToggleViewController.swift in Sources */,
 				6C489D2D282AA49900A85710 /* AppDelegate.swift in Sources */,
 				6C489D45282AA75E00A85710 /* OpenGiftViewController.swift in Sources */,
 				6C489D2F282AA49900A85710 /* SceneDelegate.swift in Sources */,
