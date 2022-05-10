@@ -16,12 +16,12 @@ class MainViewController: UITabBarController {
         tabBar.isTranslucent = false
         tabBar.unselectedItemTintColor = .white
         tabBar.tintColor = .white
-        tabBar.barTintColor = UIColor(red: 0, green: 0.86, blue: 0.7, alpha: 1)
+        tabBar.barTintColor = UIColor(named: "brand")
         tabBar.shadowImage = UIImage()
         
         let appearance = UITabBarAppearance()
         appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = UIColor(red: 0, green: 0.86, blue: 0.7, alpha: 1)
+        appearance.backgroundColor = UIColor(named: "brand")
         tabBar.standardAppearance = appearance
         if #available(iOS 15.0, *) {
             #if !targetEnvironment(macCatalyst)

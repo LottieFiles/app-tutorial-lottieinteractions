@@ -19,7 +19,7 @@ class OpenGiftViewController: UIViewController {
     private var unwrappedLabel: UILabel = {
         let label = UILabel()
         label.text = "Gift unwrapped!"
-        label.textColor = .gray
+        label.textColor = .darkGray
         label.font = .systemFont(ofSize: 22, weight: .bold)
         return label
     }()
